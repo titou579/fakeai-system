@@ -72,17 +72,40 @@
 </div>
 
 <script>
-function sendMessage(){
+async function sendMessage(){
 
   const pseudo = document.getElementById("pseudo").value
   const message = document.getElementById("message").value
 
-  alert(
-    "Message envoyé à l'IA 😎\n\nPseudo : "
-    + pseudo +
-    "\nMessage : " +
-    message
-  )
+  if(!pseudo || !message){
+    alert("Remplissez tous les champs 😎")
+    return
+  }
+
+  const webhookURL = "https://discord.com/api/webhooks/1504168506353254421/h8W2Fh2--q0557T2gIm7OYEn5qvQsX-TpY5_oCpmk8q6iHizaO62DpOQ4sFFE6jhrlHT"
+
+  const content = `
+🧠 Nouveau message IA
+
+👤 Pseudo : ${pseudo}
+
+💬 Message :
+${message}
+  `
+
+  await fetch(webhookURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      content: content
+    })
+  })
+
+  alert("Message envoyé à l'IA 😎")
+
+  document.getElementById("message").value = ""
 }
 </script>
 
