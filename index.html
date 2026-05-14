@@ -82,24 +82,14 @@ async function sendMessage(){
     return
   }
 
-  const webhookURL = "https://discord.com/api/webhooks/1504168506353254421/h8W2Fh2--q0557T2gIm7OYEn5qvQsX-TpY5_oCpmk8q6iHizaO62DpOQ4sFFE6jhrlHT"
-
-  const content = `
-🧠 Nouveau message IA
-
-👤 Pseudo : ${pseudo}
-
-💬 Message :
-${message}
-  `
-
-  await fetch(webhookURL, {
+  await fetch("/message", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      content: content
+      pseudo: pseudo,
+      message: message
     })
   })
 
