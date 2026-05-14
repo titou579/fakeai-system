@@ -15,7 +15,7 @@ app.post("/message", async (req, res) => {
   const pseudo = req.body.pseudo
   const message = req.body.message
 
-  const webhookURL = "COLLE_ICI_TON_WEBHOOK"
+  const webhookURL = "https://discord.com/api/webhooks/1504168506353254421/h8W2Fh2--q0557T2gIm7OYEn5qvQsX-TpY5_oCpmk8q6iHizaO62DpOQ4sFFE6jhrlHT"
 
   const content = `
 🧠 Nouveau message IA
